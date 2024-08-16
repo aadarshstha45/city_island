@@ -8,7 +8,7 @@ const Navbar = () => {
     <Flex py={6} justify={"center"} align={"center"}>
       <HStack align={"center"} gap={4}>
         {navItems1.map((item, index) => (
-          <React.Fragment key={item.id}>
+          <React.Fragment key={index}>
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ const Navbar = () => {
           <Image src={Logo} w={120} aspectRatio={1} />
         </motion.div>
         {navItems2.map((item, index) => (
-          <React.Fragment key={item.id}>
+          <React.Fragment key={index}>
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}

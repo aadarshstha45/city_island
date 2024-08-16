@@ -53,10 +53,10 @@ const Order = () => {
               fontSize={{ base: "16px", md: "18px" }}
               lineHeight={1.8}
               fontWeight={500}
-              letterSpacing={1}
               initial={{ opacity: 0 }}
               animate={{ opacity: isInView ? 1 : 0 }}
               transition={{ duration: 1.4 }}
+              fontFamily={"Roboto"}
             >
               Wonderfully prepared and ultra-fresh seafood may be the main event
               at City Island Co Seafood Lounge, but dining with us is the whole
@@ -72,7 +72,7 @@ const Order = () => {
           {foodData.map((food, index) => (
             <MotionGridItem
               colSpan={{ base: 1, sm: 1, lg: 1 }}
-              key={food.id}
+              key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{
                 opacity: isInView ? 1 : 0,
@@ -112,6 +112,7 @@ const Order = () => {
                   alignSelf={"bottom"}
                   fontSize={{ base: "18px", md: "20px" }}
                   initial={{ opacity: 0 }}
+                  mt={2}
                   animate={{ opacity: isInView ? 1 : 0 }}
                   transition={{ duration: 1 }}
                 >
@@ -123,6 +124,7 @@ const Order = () => {
                   size={"sm"}
                   mt={-2}
                   variant={"unstyled"}
+                  fontFamily={"Roboto"}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
                   transition={{ duration: 1.2, delay: index * 0.2 }}

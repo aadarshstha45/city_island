@@ -19,7 +19,7 @@ const LayoutWrapper = () => {
           right={0}
           bottom={0}
           zIndex={-1}
-          h={900}
+          h={950}
         >
           <Image src={Banner} objectFit={"cover"} w={"100%"} h={"100%"} />
           <Box

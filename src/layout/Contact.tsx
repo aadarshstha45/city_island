@@ -56,6 +56,8 @@ const Contact = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 0 }}
           transition={{ duration: 1.2 }}
+          fontWeight={500}
+          fontFamily={"Roboto"}
         >
           We're not far from King Soopers. Order online for carryout or
           delivery!
@@ -80,6 +82,7 @@ const Contact = () => {
             columns={2}
             gap={4}
             p={10}
+            fontFamily={"Roboto"}
           >
             <MotionGridItem colSpan={1}>
               <MotionInput placeholder="Name: " />

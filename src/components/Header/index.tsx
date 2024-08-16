@@ -9,12 +9,13 @@ interface HeaderProps {
 
 const Header = ({ title, subtitle, textColor }: HeaderProps) => {
   return (
-    <Flex flexDir={"column"} justify={"center"} align={"center"}>
+    <Flex flexDir={"column"} justify={"center"} align={"center"} gap={4}>
       <Text
         textAlign={"center"}
         textColor={"primary"}
-        fontSize={{ base: "28px", md: "20px" }}
+        fontSize={{ base: "16px", md: "20px" }}
         fontWeight={500}
+        fontFamily={"Roboto"}
         textTransform={"uppercase"}
       >
         {title}
@@ -28,7 +29,7 @@ const Header = ({ title, subtitle, textColor }: HeaderProps) => {
       >
         {subtitle}
       </Text>
-      <Image mt={4} justifySelf={"center"} src={Crab1} alt={"Crab"} />
+      <Image justifySelf={"center"} src={Crab1} alt={"Crab"} />
     </Flex>
   );
 };

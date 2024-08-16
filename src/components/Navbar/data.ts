@@ -18,17 +18,17 @@ export const navItems1 = [
 
 export const navItems2 = [
   {
-    id: 1,
+    id: 4,
     title: "Gallery",
     url: "/gallery",
   },
   {
-    id: 2,
+    id: 5,
     title: "Testimonials",
     url: "/testimonials",
   },
   {
-    id: 3,
+    id: 6,
     title: "Contact Us",
     url: "/contactus",
   },

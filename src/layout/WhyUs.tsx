@@ -11,7 +11,7 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { whyUsData } from "./data";
 
 const MotionFlex = motion(Flex);
@@ -87,62 +87,62 @@ const WhyUs = () => {
           transition={{ duration: 1.2 }}
         >
           {whyUsData.map((data, index) => (
-            <MotionHStack
-              key={data.id}
-              spacing={4}
-              transform={{
-                md: "translateX(-30%)",
-                lg: "translateX(-20%)",
-              }}
-              flexWrap={{ base: "wrap", sm: "nowrap" }}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{
-                opacity: isInView ? 1 : 0,
-                x: isInView ? xTranslation : 30, // Use calculated x value
-              }}
-              transition={{ duration: 1, delay: index * 0.2 }}
-            >
-              {data.icon && (
-                <Flex
-                  bg={"white"}
-                  shadow={"md"}
-                  p={12}
-                  borderRadius={"50%"}
-                  justify={"center"}
-                  align={"center"}
-                  w={{ base: 8, sm: 12 }}
-                  h={{ base: 8, sm: 12 }}
-                >
-                  <data.icon />
-                </Flex>
-              )}
-              <Stack gap={1} key={data.id}>
-                <MotionText
-                  key={data.id}
-                  fontSize={{ base: "16px", md: "18px" }}
-                  fontWeight={500}
-                  letterSpacing={1}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: isInView ? 1 : 0 }}
-                  transition={{ duration: 1.2 }}
-                >
-                  {data.title}
-                </MotionText>
+            <React.Fragment key={`${data.id}-${index}`}>
+              <MotionHStack
+                spacing={4}
+                transform={{
+                  md: "translateX(-30%)",
+                  lg: "translateX(-20%)",
+                }}
+                flexWrap={{ base: "wrap", sm: "nowrap" }}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{
+                  opacity: isInView ? 1 : 0,
+                  x: isInView ? xTranslation : 30, // Use calculated x value
+                }}
+                transition={{ duration: 1, delay: index * 0.2 }}
+              >
+                {data.icon && (
+                  <Flex
+                    bg={"white"}
+                    shadow={"md"}
+                    p={12}
+                    borderRadius={"50%"}
+                    justify={"center"}
+                    align={"center"}
+                    w={{ base: 8, sm: 12 }}
+                    h={{ base: 8, sm: 12 }}
+                  >
+                    <data.icon />
+                  </Flex>
+                )}
+                <Stack gap={1}>
+                  <MotionText
+                    fontSize={{ base: "16px", md: "18px" }}
+                    fontWeight={500}
+                    letterSpacing={1}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: isInView ? 1 : 0 }}
+                    transition={{ duration: 1.2 }}
+                  >
+                    {data.title}
+                  </MotionText>
 
-                <MotionText
-                  key={data.id}
-                  fontSize={{ base: "16px", md: "18px" }}
-                  lineHeight={1.8}
-                  fontWeight={500}
-                  letterSpacing={1}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: isInView ? 1 : 0 }}
-                  transition={{ duration: 1.2 }}
-                >
-                  {data.description}
-                </MotionText>
-              </Stack>
-            </MotionHStack>
+                  <MotionText
+                    key={data.id}
+                    fontSize={{ base: "16px", md: "18px" }}
+                    lineHeight={1.8}
+                    fontWeight={500}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: isInView ? 1 : 0 }}
+                    transition={{ duration: 1.2 }}
+                    fontFamily={"Roboto"}
+                  >
+                    {data.description}
+                  </MotionText>
+                </Stack>
+              </MotionHStack>
+            </React.Fragment>
           ))}
         </MotionFlex>
       </MotionGridItem>

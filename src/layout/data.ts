@@ -24,21 +24,21 @@ export const foodData = [
 
 export const whyUsData = [
   {
-    id: 1,
+    id: 11,
     title: "FAST DELIVERY",
     description:
       "Everything you order at City Island Co Seafood Lounge will be quickly delivered to your door.",
     icon: ClockIcon,
   },
   {
-    id: 2,
+    id: 12,
     title: "EXPERIENCED CHEFS",
     description:
       "Our staff consists of chefs and cooks with years of experience.",
     icon: ChefIcon,
   },
   {
-    id: 3,
+    id: 13,
     title: "FRESH FOOD",
     description:
       "We use only the best ingredients to cook the tasty fresh food for you.",

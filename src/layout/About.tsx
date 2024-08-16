@@ -50,23 +50,23 @@ const About = () => {
           transition={{ duration: 1 }}
         >
           <Header title={"Find US"} subtitle={"Visit Our Restaurant"} />
-          <MotionText textAlign={"center"} mt={4}>
+          <MotionText textAlign={"center"} mt={4} fontFamily={"Roboto"}>
             We see our customers as invited guests to a party, and we are the
             hosts.
           </MotionText>
-          <MotionText textAlign={"center"} mt={4}>
+          <MotionText textAlign={"center"} mt={4} fontFamily={"Roboto"}>
             <Text textColor={"primary"} as={"span"} fontWeight={"bold"}>
               Address:{" "}
             </Text>
             2595 Palm Bay Rd NE, Palm Bay, FL 32905
           </MotionText>
-          <MotionText textAlign={"center"} mt={4}>
+          <MotionText textAlign={"center"} mt={4} fontFamily={"Roboto"}>
             <Text textColor={"primary"} as={"span"} fontWeight={"bold"}>
               Hours:{" "}
             </Text>
             11:00 AM - 9:00 PM
           </MotionText>
-          <MotionText textAlign={"center"} mt={4}>
+          <MotionText textAlign={"center"} mt={4} fontFamily={"Roboto"}>
             <Text textColor={"primary"} as={"span"} fontWeight={"bold"}>
               Phone:{" "}
             </Text>
