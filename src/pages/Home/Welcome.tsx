@@ -98,7 +98,7 @@ const Welcome = () => {
             mt={12}
           >
             <MotionFlex
-              p={0}
+              p={4}
               mt={-5}
               initial={{ rotate: 0 }}
               animate={{ rotate: 360, zIndex: 20 }}

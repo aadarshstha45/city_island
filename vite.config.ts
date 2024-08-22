@@ -1,4 +1,4 @@
-import { default as react, default as swc } from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { defineConfig } from "vite";
 import compression from "vite-plugin-compression";
@@ -7,7 +7,6 @@ import compression from "vite-plugin-compression";
 export default defineConfig({
   plugins: [
     react(),
-    swc(),
     compression({
       algorithm: "gzip",
       ext: ".gz",
