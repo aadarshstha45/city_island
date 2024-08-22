@@ -1,4 +1,5 @@
 import GalleryBanner from "@/assets/GalleryBanner.jpg";
+import Motion from "@/components/Motion";
 import { useFetch } from "@/hooks/useFetch";
 import { RootInterface } from "@/utils/apiResponse";
 import { Box, Container, Flex, Image, Text } from "@chakra-ui/react";
@@ -52,15 +53,25 @@ const Gallery = () => {
             >
               <Masonry gutter="20px">
                 {(data as RootInterface)?.hits.map((item) => (
-                  <Link to={item.webformatURL} key={item.id} target="_blank">
-                    <Image
-                      loading="lazy"
-                      key={item.id}
-                      src={item.webformatURL}
-                      alt={item.tags}
-                      borderRadius={10}
-                    />
-                  </Link>
+                  <Motion.Flex
+                    key={item.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                    }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  >
+                    <Link to={item.webformatURL} key={item.id} target="_blank">
+                      <Image
+                        loading="lazy"
+                        key={item.id}
+                        src={item.webformatURL}
+                        alt={item.tags}
+                        borderRadius={10}
+                      />
+                    </Link>
+                  </Motion.Flex>
                 ))}
               </Masonry>
             </ResponsiveMasonry>
