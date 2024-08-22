@@ -22,9 +22,8 @@ const MotionText = motion(Text);
 
 const WhyUs = () => {
   const [isLessThan868] = useMediaQuery("(max-width: 868px)");
-  const [isLessThan1024] = useMediaQuery("(max-width: 1024px)");
 
-  const xTranslation = isLessThan868 ? 0 : isLessThan1024 ? -40 : -50;
+  const xTranslation = isLessThan868 ? 0 : -70;
 
   // Ref for the section to detect when it comes into view
   const ref = useRef(null);
@@ -37,6 +36,7 @@ const WhyUs = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}
         transition={{ duration: 1.5 }}
+        display={{ base: "none", md: "block" }}
       ></MotionGridItem>
       <MotionGridItem
         colSpan={1}
@@ -53,6 +53,7 @@ const WhyUs = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}
         transition={{ duration: 1.5 }}
+        h={"full"}
       >
         <MotionImage
           w={"full"}
@@ -71,6 +72,7 @@ const WhyUs = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}
         transition={{ duration: 1.5 }}
+        mt={{ base: 600, sm: 400, md: 0 }}
       >
         <MotionFlex
           w={"full"}
@@ -100,6 +102,7 @@ const WhyUs = () => {
                   opacity: isInView ? 1 : 0,
                   x: isInView ? xTranslation : 30, // Use calculated x value
                 }}
+                justify={{ base: "center", sm: "start" }}
                 transition={{ duration: 1, delay: index * 0.2 }}
               >
                 {data.icon && (
@@ -124,6 +127,7 @@ const WhyUs = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: isInView ? 1 : 0 }}
                     transition={{ duration: 1.2 }}
+                    textAlign={{ base: "center", sm: "start" }}
                   >
                     {data.title}
                   </MotionText>
@@ -137,6 +141,7 @@ const WhyUs = () => {
                     animate={{ opacity: isInView ? 1 : 0 }}
                     transition={{ duration: 1.2 }}
                     fontFamily={"Roboto"}
+                    textAlign={{ base: "center", sm: "start" }}
                   >
                     {data.description}
                   </MotionText>

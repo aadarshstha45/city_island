@@ -25,11 +25,11 @@ export const navItems2 = [
   {
     id: 5,
     title: "Testimonials",
-    url: "/testimonials",
+    url: "/testimonial",
   },
   {
     id: 6,
     title: "Contact Us",
-    url: "/contactus",
+    url: "/contact",
   },
 ];

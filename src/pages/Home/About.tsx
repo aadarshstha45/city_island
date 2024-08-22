@@ -78,6 +78,7 @@ const About = () => {
             gap={{ base: 1, md: 6 }}
             maxW={window.innerWidth}
             align={"center"}
+            justify={"center"}
           >
             <MotionImage
               objectFit={"cover"}

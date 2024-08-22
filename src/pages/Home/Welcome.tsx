@@ -24,16 +24,18 @@ const MotionGridItem = motion(GridItem);
 const Welcome = () => {
   const [isLessThan690] = useMediaQuery("(max-width: 690px)");
   const [isLessThan450] = useMediaQuery("(max-width: 450px)");
+  const [isLessThan360] = useMediaQuery("(max-width: 360px)");
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true });
 
   return (
     <MotionFlex
       flexDir={"column"}
-      mt={{ base: 700, md: 600 }}
+      mt={{ base: 500, md: 600 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
+      pos={"relative"}
     >
       <MotionFlex
         justify={"center"}
@@ -42,12 +44,13 @@ const Welcome = () => {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
+        bg={"white"}
       >
         <MotionText
-          fontSize={{ base: "38px", md: "42px", xl: "46px" }}
+          fontSize={{ base: "34px", sm: "38px", md: "42px", xl: "46px" }}
           fontWeight="bold"
           position="absolute"
-          top={{ base: "-550px", sm: "-500px", md: "-520px" }}
+          top={{ base: "-450px", sm: "-400px", md: "-500px" }} // Adjusted
           zIndex={30}
           w={{ sm: "500px", md: "650px" }}
           textAlign={"center"}
@@ -62,10 +65,16 @@ const Welcome = () => {
           flexDir={"column"}
           align={"center"}
           bg={"#CD0011"}
-          w={"380px"}
+          w={
+            isLessThan360
+              ? "98vw"
+              : isLessThan450
+              ? "90vw"
+              : { base: "85vw", sm: "380px" }
+          }
           h={"400px"}
           position="absolute"
-          bottom={{ base: "-90px", md: "-60px" }}
+          bottom={{ base: "-150px", md: "-130px" }} // Adjusted
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
@@ -81,31 +90,47 @@ const Welcome = () => {
           >
             Order Now
           </MotionButton>
-          <Box zIndex={20} position="relative" w="300px" h="300px" mt={12}>
-            <MotionImage
-              src={Plate}
-              w={300}
-              h={300}
+          <MotionFlex
+            initial={{ opacity: 0, zIndex: 30 }}
+            animate={{ opacity: 1, zIndex: 30 }}
+            zIndex={20}
+            position="relative"
+            mt={12}
+          >
+            <MotionFlex
+              p={0}
+              mt={-5}
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360, zIndex: 20 }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "linear",
+                delay: 0,
+              }}
+              justify={"center"}
+              align={"center"}
               borderRadius={"50%"}
-              p={2}
-              mt={-3}
-              initial={{ rotate: -360 }}
-              animate={{ rotate: 0 }}
-              transition={{ duration: 1 }}
-            />
+              zIndex={20}
+              w={300}
+            >
+              <MotionImage src={Plate} aspectRatio={1} />
+            </MotionFlex>
             {/* SVG for Circular Text */}
-            <svg
+            <motion.svg
               viewBox="0 0 350 350"
               width="350"
               height="350"
               style={{
                 position: "absolute",
-                top: -20,
-                left: 0,
+                top: -50,
+                left: -30,
                 zIndex: 25,
               }}
+              initial={{ rotate: -360 }}
+              animate={{ rotate: 0 }}
+              transition={{ delay: 1, duration: 1 }}
             >
-              {/* Define the shadow filter */}
               <defs>
                 <filter
                   id="shadow"
@@ -125,27 +150,30 @@ const Welcome = () => {
                 </filter>
               </defs>
 
-              {/* Circle Path */}
               <path
                 id="circle"
-                d="M 150, 150 m -130, 0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0"
+                d={
+                  "M 175, 175 m -130, 0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0"
+                }
                 fill="transparent"
               />
 
-              {/* Text with shadow filter applied */}
               <text
                 fill="white"
-                fontSize="20"
+                fontSize={isLessThan450 ? "15" : "20"}
                 fontWeight="bold"
                 letterSpacing="20"
-                filter="url(#shadow)" // Applying the shadow filter
+                filter="url(#shadow)"
               >
-                <textPath href="#circle" startOffset="0%">
+                <textPath
+                  href="#circle"
+                  startOffset={"0%"} // Adjusted startOffset
+                >
                   TRY OUR HOTTEST MENU
                 </textPath>
               </text>
-            </svg>
-          </Box>
+            </motion.svg>
+          </MotionFlex>
         </MotionFlex>
       </MotionFlex>
       <Box pos="relative" mt={150}>
@@ -155,8 +183,8 @@ const Welcome = () => {
           left={0}
           bg={"white"}
           w="100vw"
-          h={{ base: "132px", md: "167px" }}
-          zIndex={9}
+          h={{ base: "156px", md: "167px" }}
+          zIndex={0}
           clipPath={"polygon(50% 0%, 0% 100%, 100% 100%)"}
           transitionDuration={"0"}
         />
@@ -223,7 +251,7 @@ const Welcome = () => {
                       borderRadius={5}
                       overflow={"hidden"}
                       pos={"relative"}
-                      bg={`url(${food.image}) center/cover no-repeat`}
+                      bg={`url(${food.image}) center/cover no-repeat`} // Fixed string interpolation
                       _before={{
                         content: '""',
                         pos: "absolute",
